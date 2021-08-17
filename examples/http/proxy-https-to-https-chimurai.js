@@ -1,8 +1,8 @@
 var https = require('https'),
 
-              express = require('express'),
+    express = require('express'),
 
-              { createProxyMiddleware } = require('http-proxy-middleware'),
+    { createProxyMiddleware } = require('http-proxy-middleware'),
 
     http = require('http'),
 
@@ -20,9 +20,9 @@ var https = require('https'),
 
     httpsOpts = {
 
-      key: fs.readFileSync(path.join(fixturesDir, 'Intermediaire_cle_test_rachid.pem'), 'utf8'),
+      key: fs.readFileSync(path.join(fixturesDir, 'cert.pem'), 'utf8'),
 
-      cert: fs.readFileSync(path.join(fixturesDir, 'server1_bis_test_rachid.crt'), 'utf8')
+      cert: fs.readFileSync(path.join(fixturesDir, 'cert.crt'), 'utf8')
 
     };
 
@@ -72,9 +72,9 @@ logLevel: 'debug'
 
  
 
-var httpServer = https.createServer(httpsOpts, app)
+var httpsServer = https.createServer(httpsOpts, app)
 
-httpServer.listen(8010);
+httpsServer.listen(8010);
 
  
 
